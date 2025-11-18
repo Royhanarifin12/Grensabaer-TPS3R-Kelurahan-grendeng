@@ -1,0 +1,51 @@
+body {
+    background-color: var(--bs-body-bg);
+}
+#auth {
+    height: 100vh;
+    overflow-x: hidden;
+}
+#auth #auth-right {
+    height: 100%;
+    background: url(../png/4853433.png),
+        linear-gradient(90deg, #2d499d, #3f5491);
+}
+#auth #auth-left {
+    /* padding: 5rem; */
+}
+#auth #auth-left .auth-title {
+    font-size: 2rem;
+    margin-bottom: 0;
+    text-align: center;
+}
+#auth #auth-left .auth-subtitle {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: #a8aebb;
+    text-align: center;
+}
+#auth #auth-left .auth-logo {
+    margin-bottom: 2rem;
+}
+#auth #auth-left .auth-logo img {
+    height: 5rem;
+}
+@media screen and (max-width: 1399.9px) {
+    #auth #auth-left {
+        padding: 3rem;
+    }
+}
+@media screen and (max-width: 767px) {
+    #auth #auth-left {
+        padding: 5rem;
+    }
+}
+@media screen and (max-width: 576px) {
+    #auth #auth-left {
+        padding: 5rem 3rem;
+    }
+}
+html[data-bs-theme="dark"] #auth-right {
+    background: url(../png/4853433.png),
+        linear-gradient(90deg, #2d499d, #3f5491);
+}

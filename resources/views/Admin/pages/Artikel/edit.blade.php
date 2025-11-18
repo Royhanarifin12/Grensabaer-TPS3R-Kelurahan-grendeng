@@ -1,0 +1,41 @@
+{{-- GANTI 'layout.admin' Sesuai Nama Layout Admin Anda --}}
+@extends('layout.adminPage')
+
+@section('content')
+<div class="container-fluid">
+    <h3>Edit Informasi: {{ $artikel->title }}</h3>
+
+    <div class="card">
+        <div class="card-body">
+            <form action="{{ route('admin.artikel.update', $artikel->id) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT') {{-- Ini penting untuk edit --}}
+
+                <div class="mb-3">
+                    <label for="title" class="form-label">Judul Informasi</label>
+                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{ old('title', $artikel->title) }}" required>
+                    @error('title') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="image" class="form-label">Gambar Header</label>
+                    <br>
+                    <img src="{{ Storage::url($artikel->image) }}" alt="{{ $artikel->title }}" class="img-thumbnail mb-2" width="200">
+                    <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image">
+                    <small class="text-muted">Kosongkan jika tidak ingin mengubah gambar.</small>
+                    @error('image') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="content" class="form-label">Konten</label>
+                    <textarea class="form-control @error('content') is-invalid @enderror" id="content" name="content" rows="10" required>{{ old('content', $artikel->content) }}</textarea>
+                    @error('content') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                </div>
+
+                <button type="submit" class="btn btn-primary">Update</button>
+                <a href="{{ route('admin.artikel.index') }}" class="btn btn-secondary">Batal</a>
+            </form>
+        </div>
+    </div>
+</div>
+@endsection
