@@ -11,5 +11,7 @@ class Pengaduan extends Model
         'no_telp',
         'alamat',
         'pengaduan',
+        'tanggapan',
+        'tampilkan_di_beranda',
     ];
 }
