@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-fluid">
-    <h3>Manajemen Gambar Proyek</h3>
+    <h3>Manajemen Proyek</h3>
 
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
