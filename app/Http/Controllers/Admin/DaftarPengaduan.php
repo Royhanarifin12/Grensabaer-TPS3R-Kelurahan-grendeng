@@ -22,6 +22,23 @@ class DaftarPengaduan extends Controller
         return view($this->viewPath . 'index', compact('pengaduan'));
     }
 
+    public function tanggapi(Request $request, $id)
+    {
+        $request->validate([
+            'tanggapan' => 'required|string',
+        ]);
+
+        $pengaduan = Pengaduan::findOrFail($id);
+
+        $pengaduan->update([
+            'tanggapan' => $request->tanggapan,
+            'status'    => 'proses', 
+        ]);
+
+        return redirect()->route('admin.daftar-pengaduan')
+            ->with('success', 'Tanggapan berhasil dikirim dan status telah diperbarui.');
+    }
+
     public function proses($id)
     {
         Pengaduan::where('id', $id)->update([
