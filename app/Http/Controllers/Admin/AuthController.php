@@ -36,8 +36,22 @@ class AuthController
             return redirect()->intended('/admin/dashboard');
         }
 
+        $user = Auth::getProvider()->retrieveByCredentials($credentials);
+
+        if (!$user) {
+            return back()
+            ->withErrors(['username' => 'Akun anda belum terdaftar'])
+           ->onlyInput('username'); 
+        }
+
+        if (Auth::attempt($credentials, $request->remember)){
+            $request->session()->regenerate();
+
+            return redirect()->intended('admin/dashboard');
+        }
+
         return back()
-            ->withErrors(['username' => 'Username atau password salah.'])
+            ->withErrors(['password' => 'Password anda salah, tolong beriksa kembali password anda.'])
             ->onlyInput('username');
     }
 
