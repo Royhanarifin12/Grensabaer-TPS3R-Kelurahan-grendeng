@@ -1,4 +1,4 @@
-@extends('layout.adminPage') {{-- Sesuaikan dengan layout Anda --}}
+@extends('layout.adminPage') 
 
 @section('pageTitle', 'Detail Absensi')
 @section('pageSubtitle', 'Detail kehadiran pegawai pada tanggal ' . \Carbon\Carbon::parse($tanggal)->translatedFormat('d F Y'))
