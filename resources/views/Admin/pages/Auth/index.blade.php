@@ -22,7 +22,7 @@
                             <div class="d-flex justify-content-center flex-column align-items-center gap-2">
                                 <img src="{{ asset('landing/img/download.png') }}" alt="">
                                 <div class=" text-center">
-                                    <h1 class="m-0 fw-bold text-primary">Grensaber TPS3R</h1>
+                                    <h1 class="m-0 fw-bold">Grensaber TPS3R</h1>
                                     <h5 class="m-0">Kelurahan Grendeng</h5>
                                 </div>
                             </div>
@@ -77,7 +77,7 @@
                     </form>
                     <div class="text-center mt-3">
                         <p class="text-gray-600">
-                            2025 &copy; Grensaber TPS 3R Kelurahan Grendeng
+                            2025 &copy; Grensaber TPS3R Kelurahan Grendeng
                         </p>
                     </div>
                 </div>
