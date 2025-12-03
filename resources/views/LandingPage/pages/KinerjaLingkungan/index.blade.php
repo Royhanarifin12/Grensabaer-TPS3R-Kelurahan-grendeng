@@ -211,8 +211,8 @@
 
     <div class="page-title light-background">
         <div class="container">
-            <h1 class="mb-3">Kinerja Lingkungan TPS3R Grendeng</h1>
-                <h3 style="color: #555;">Laporan Bulan: {{ $namaBulanLaporan }}</h3>
+            <h1 class="mb-3">Kinerja Lingkungan</h1>
+                <h3 style="color: #555;">Bulan: {{ $namaBulanLaporan }}</h3>
         </div>
     </div>
 
@@ -229,7 +229,7 @@
                                 <h3>Volume Sampah Masuk</h3>
                             </div>
 
-                            <div class="main-value">{{ number_format($totalSampah, 0, ',', '.') }} Kg</div>
+                            <div class="main-value">{{ number_format($totalSampah, 0, ',', '.') }} m<sup>3</sup></div>
                             <p style="font-size: 0.9em; color: #777;">Total sampah yang diterima bulan ini</p>
 
                             <div class="stacked-bar-container">
@@ -242,11 +242,11 @@
                             </div>
                             <ul class="legend-list">
                                 <li><span class="legend-dot" style="background-color: #38a169;"></span> Organik
-                                    ({{ $persenOrganik }}%) - {{ number_format($totalOrganik, 0, ',', '.') }} Kg</li>
+                                    ({{ $persenOrganik }}%) - {{ number_format($totalOrganik, 0, ',', '.') }} m<sup>3</sup></li>
                                 <li><span class="legend-dot" style="background-color: #4299e1;"></span> Anorganik
-                                    ({{ $persenAnorganik }}%) - {{ number_format($totalAnorganik, 0, ',', '.') }} Kg</li>
+                                    ({{ $persenAnorganik }}%) - {{ number_format($totalAnorganik, 0, ',', '.') }} m<sup>3</sup></li>
                                 <li><span class="legend-dot" style="background-color: #e53e3e;"></span> Residu ke TPA
-                                    ({{ $persenResidu }}%) - {{ number_format($totalResidu, 0, ',', '.') }} Kg</li>
+                                    ({{ $persenResidu }}%) - {{ number_format($totalResidu, 0, ',', '.') }} m<sup>3</sup></li>
                             </ul>
                         </div>
 
@@ -260,7 +260,7 @@
 
                             <div class="dual-metric">
                                 <div>
-                                    <div class="value-sub">{{ number_format($totalDikelola, 0, ',', '.') }} Kg</div>
+                                    <div class="value-sub">{{ number_format($totalDikelola, 0, ',', '.') }} m<sup>3</sup></div>
                                     <div class="label-sub">Material Dikelola</div>
                                 </div>
                                 <div>
