@@ -44,7 +44,7 @@
                         <i class="bi bi-recycle"></i>
                     </div>
                     <div class="stat-content">
-                        <h4>{{ number_format($totalKinerjaBulanIni, 0, ',', '.') }} kg</h4>
+                        <h4>{{ number_format($totalKinerjaBulanIni, 0, ',', '.') }} m<span>3</span></h4>
                         <p class="mb-0">Sampah Terkelola (Bulan Ini)</p>
                     </div>
                 </div>
