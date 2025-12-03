@@ -5,6 +5,15 @@
 
 @section('content')
 
+    {{-- [TAMBAHAN] 1. ALERT NOTIFIKASI SUKSES --}}
+    @if(session('success'))
+    <div class="alert alert-success alert-dismissible fade show mb-4" role="alert">
+        <i class="bi bi-check-circle-fill me-2"></i> {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
+
+    {{-- FORM HAPUS MASSAL --}}
     <form id="bulkDeleteForm" action="{{ route('admin.daftar-pengaduan.bulkDestroy') }}" method="POST">
         @csrf
         @method('DELETE')
@@ -17,17 +26,25 @@
                 <i class="bi bi-trash"></i> <span id="buttonText">Hapus Data Terpilih</span>
             </button>
         </div>
+    </form> 
 
-        <div class="row">
-            @foreach ($pengaduan as $data)
-                <x-admin-pengaduan-card id="{{ $data->id }}" nama="{{ $data->nama }}" no_telp="{{ $data->no_telp }}"
-                    status="{{ $data->status }}" alamat="{{ $data->alamat }}"
-                    created_at="{{ $data->created_at->translatedFormat('d M Y, H:i') }}" :tampilkan_di_beranda="$data->tampilkan_di_beranda">
-                    {{ $data->pengaduan }}
-                </x-admin-pengaduan-card>
-            @endforeach
-        </div>
-    </form>
+    {{-- DAFTAR KARTU PENGADUAN --}}
+    <div class="row">
+        @foreach ($pengaduan as $data)
+            <x-admin-pengaduan-card 
+                id="{{ $data->id }}" 
+                nama="{{ $data->nama }}" 
+                no_telp="{{ $data->no_telp }}"
+                status="{{ $data->status }}" 
+                alamat="{{ $data->alamat }}"
+                created_at="{{ $data->created_at->translatedFormat('d M Y, H:i') }}" 
+                :tampilkan_di_beranda="$data->tampilkan_di_beranda"
+                tanggapan="{{ $data->tanggapan }}">
+                {{ $data->pengaduan }}
+            </x-admin-pengaduan-card>
+        @endforeach
+    </div>
+
 @endsection
 
 @push('scripts')
@@ -38,17 +55,12 @@
         const selectedIdsInput = document.getElementById('selectedIdsInput');
         const buttonText = document.getElementById('buttonText');
 
-        if (!bulkDeleteButton) {
-            console.error('Elemen tombol Hapus Massal (bulkDeleteButton) tidak ditemukan.');
-            return;
-        }
+        if (!bulkDeleteButton) return;
 
         function updateBulkDeleteButton() {
             const selectedIds = Array.from(checkboxes)
                 .filter(checkbox => checkbox.checked)
                 .map(checkbox => checkbox.value);
-
-            console.log('Pengaduan terpilih:', selectedIds.length);
 
             selectedIdsInput.value = selectedIds.join(',');
 
