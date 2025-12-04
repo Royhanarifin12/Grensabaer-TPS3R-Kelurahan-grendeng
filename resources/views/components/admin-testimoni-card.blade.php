@@ -3,11 +3,9 @@
 @php
     $initial = strtoupper(substr($nama, 0, 1));
     
-    // Logika Warna Badge
     $badgeClass = $tampilkanDiBeranda ? 'bg-success' : 'bg-secondary';
-    $badgeText  = $tampilkanDiBeranda ? 'Tayang' : 'Draft';
+    $badgeText  = $tampilkanDiBeranda ? 'Aktif' : 'Non-Aktif';
 
-    // Logika Warna Avatar (Sama seperti Pengaduan)
     $colors = ['primary', 'success', 'danger', 'warning', 'info', 'dark'];
     $colorIndex = intval($id) % count($colors);
     $avatarColor = $colors[$colorIndex];
@@ -16,29 +14,22 @@
 <div class="col-md-6 col-xl-4 mb-4">
     <div class="card h-100 border-0 shadow-sm rounded-4 p-3 bg-white">
         
-        {{-- LAYOUT UTAMA: Checkbox (Kiri) - Konten (Kanan) --}}
         <div class="d-flex gap-2">
             
-            {{-- KOLOM 1: Checkbox --}}
-            {{-- Menggunakan mt-2 agar sejajar dengan bagian tengah Avatar --}}
             <div class="mt-2">
                 <input class="form-check-input testimoni-checkbox border-2" type="checkbox" value="{{ $id }}" style="cursor: pointer;">
             </div>
 
-            {{-- KOLOM 2: Konten Utama --}}
             <div class="flex-grow-1 overflow-hidden">
                 
-                {{-- A. HEADER: Avatar + Nama + Status --}}
                 <div class="d-flex justify-content-between align-items-start mb-2">
                     <div class="d-flex gap-3 align-items-center">
                         
-                        {{-- Avatar Warna-warni --}}
                         <div class="rounded-circle d-flex align-items-center justify-content-center text-white fw-bold shadow-sm bg-{{ $avatarColor }} bg-gradient" 
                              style="width: 42px; height: 42px; font-size: 1rem; flex-shrink: 0;">
                             {{ $initial }}
                         </div>
                         
-                        {{-- Info Nama --}}
                         <div style="line-height: 1.2;">
                             <h6 class="fw-bold text-dark mb-0">{{ $nama }}</h6>
                             <small class="text-muted" style="font-size: 0.75rem;">
@@ -47,16 +38,13 @@
                         </div>
                     </div>
 
-                    {{-- Badge Status --}}
                     <span class="badge {{ $badgeClass }} rounded-pill shadow-sm" style="font-size: 0.7rem; padding: 6px 12px;">
                         {{ $badgeText }}
                     </span>
                 </div>
 
-                {{-- WRAPPER KONTEN TENGAH --}}
                 <div class="mt-2">
                     
-                    {{-- B. META INFO: Tanggal & Lokasi --}}
                     <div class="d-flex gap-3 text-muted mb-2 small align-items-center">
                         <div class="d-flex align-items-center">
                             <i class="bi bi-calendar3 me-2 text-primary"></i> {{ $created_at }}
@@ -66,7 +54,6 @@
                         </div>
                     </div>
 
-                    {{-- C. KOTAK PESAN --}}
                     <div class="bg-light rounded-3 p-3 border border-light-subtle position-relative mb-1">
                         <i class="bi bi-quote position-absolute text-secondary opacity-25" style="top: 2px; left: 5px; font-size: 1.2rem;"></i>
                         <p class="fst-italic text-dark mb-0 position-relative z-1 lh-base" style="font-size: 0.95rem; padding-left: 10px;">
@@ -74,14 +61,10 @@
                         </p>
                     </div>
 
-                    {{-- D. FOOTER AKSI (Dipisah dengan HR) --}}
-                    
-                    {{-- Tag HR (Garis Pemisah) --}}
                     <hr class="text-muted opacity-25 my-3">
 
                     <div class="d-flex justify-content-between align-items-center">
                         
-                        {{-- Kiri: Tombol Utama --}}
                         @if (!$tampilkanDiBeranda)
                             <form action="{{ route('admin.testimoni.approve', $id) }}" method="POST">
                                 @csrf
@@ -90,13 +73,11 @@
                                 </button>
                             </form>
                         @else
-                            {{-- Label Sudah Tampil --}}
                             <div class="text-success fw-bold d-flex align-items-center bg-success-subtle px-3 py-1 rounded-pill" style="font-size: 0.8rem;">
                                 <i class="bi bi-check-circle-fill me-2"></i> Sudah Tampil
                             </div>
                         @endif
 
-                        {{-- Kanan: Tombol Opsi --}}
                         @if($tampilkanDiBeranda)
                              <form action="{{ route('admin.testimoni.unapprove', $id) }}" method="POST">
                                 @csrf
@@ -105,13 +86,11 @@
                                 </button>
                             </form>
                         @else
-                            {{-- Tombol Dummy agar seimbang --}}
                             <button class="btn btn-light text-muted btn-sm rounded-pill px-3 border" disabled style="font-size: 0.8rem;">
                                 <i class="bi bi-three-dots"></i>
                             </button>
                         @endif
                     </div>
-
                 </div> 
             </div>
         </div>
