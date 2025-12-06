@@ -27,7 +27,7 @@ class FormTestimonialController extends Controller
             'nama' => ['required'],
             'no_telp' => ['required'],
             'alamat' => ['required'],
-            'testimoni' => ['required'],
+            'testimoni' => ['required','max:235'],
         ]);
 
         Testimoni::create([ 
