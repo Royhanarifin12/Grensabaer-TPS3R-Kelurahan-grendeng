@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -22,18 +23,6 @@
     <link href="{{ asset('landing/css/main.css') }}" rel="stylesheet">
 
     <style>
-        .testimonials-slider .swiper-wrapper {
-            transition-timing-function: linear !important;
-            -webkit-transition-timing-function: linear !important;
-        }
-
-        .testimonials-slider .testimonial-item {
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
-            border-radius: 10px;
-            border-left: 4px solid #74B435;
-            height: 100%;
-        }
-
         .testimonial-item h3 {
             font-weight: 600;
         }
@@ -91,10 +80,10 @@
                 speed: 10000,
                 loop: true,
                 autoplay: {
-                    delay: 0, 
+                    delay: 0,
                     disableOnInteraction: false,
                 },
-                allowTouchMove: false, 
+                allowTouchMove: false,
                 pagination: false,
                 breakpoints: {
                     768: {
@@ -102,7 +91,7 @@
                         spaceBetween: 30
                     },
                     320: {
-                        slidesPerView: 1, 
+                        slidesPerView: 1,
                         spaceBetween: 20
                     }
                 }
@@ -110,4 +99,5 @@
         });
     </script>
 </body>
+
 </html>

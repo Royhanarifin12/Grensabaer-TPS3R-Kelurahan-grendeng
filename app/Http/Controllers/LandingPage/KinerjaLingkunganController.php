@@ -23,16 +23,16 @@ class KinerjaLingkunganController
         $namaBulanLaporan = $targetBulan->translatedFormat('F Y');
 
         $totalOrganik = VolumeSampah::whereYear('tanggal', $targetBulan->year)
-                                    ->whereMonth('tanggal', $targetBulan->month)
-                                    ->sum('organik');
+            ->whereMonth('tanggal', $targetBulan->month)
+            ->sum('organik');
 
         $totalAnorganik = VolumeSampah::whereYear('tanggal', $targetBulan->year)
-                                    ->whereMonth('tanggal', $targetBulan->month)
-                                    ->sum('anorganik');
+            ->whereMonth('tanggal', $targetBulan->month)
+            ->sum('anorganik');
 
         $totalResidu = VolumeSampah::whereYear('tanggal', $targetBulan->year)
-                                    ->whereMonth('tanggal', $targetBulan->month)
-                                    ->sum('residu');
+            ->whereMonth('tanggal', $targetBulan->month)
+            ->sum('residu');
 
         $totalSampah = $totalOrganik + $totalAnorganik + $totalResidu;
         $totalDikelola = $totalOrganik + $totalAnorganik;
@@ -50,17 +50,17 @@ class KinerjaLingkunganController
         }
 
         $jumlahWargaAktif = Warga::count();
-    
+
         $totalEkonomiRupiah = VolumeSampah::whereYear('tanggal', $targetBulan->year)
-                                          ->whereMonth('tanggal', $targetBulan->month)
-                                          ->sum('nilai_ekonomi');
+            ->whereMonth('tanggal', $targetBulan->month)
+            ->sum('nilai_ekonomi');
 
         if ($totalEkonomiRupiah >= 1000000) {
             $nilaiEkonomiFormatted = round($totalEkonomiRupiah / 1000000, 1) . ' Jt';
         } elseif ($totalEkonomiRupiah > 0) {
             $nilaiEkonomiFormatted = round($totalEkonomiRupiah / 1000, 0) . ' Rb';
         } else {
-            
+
             $nilaiEkonomiFormatted = '0';
         }
 
