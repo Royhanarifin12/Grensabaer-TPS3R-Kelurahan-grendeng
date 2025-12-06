@@ -42,7 +42,7 @@ class FormPengaduanController extends Controller
             'nama'      => ['required'],
             'no_telp'   => ['required'],
             'alamat'    => ['required'],
-            'pengaduan' => ['required'],
+            'pengaduan' => ['required', 'max:235'],
         ]);
 
         Pengaduan::create([
