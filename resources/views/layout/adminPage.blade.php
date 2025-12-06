@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grensaber TPS3R Kelurahan Grendeng</title>
-    <link href="{{ asset('favicon.ico') }}" rel="icon">
+    <link href="{{ asset('landing/img/download.png') }}" rel="icon">
     <link rel="stylesheet" crossorigin href="{{ asset('admin/compiled/css/app.css') }}">
     <link rel="stylesheet" crossorigin href="{{ asset('admin/compiled/css/app-dark.css') }}">
     <link rel="stylesheet" crossorigin href="{{ asset('admin/compiled/css/iconly.css') }}">
